@@ -2,7 +2,7 @@
 /* Small landscape screens ----------- */
 @media screen and (max-width : 1200px) {
 	body{font-size: 1.5vw;}
-	.page{width:100%;}
+
 }
 
 /* Larger landscape screens ----------- */
