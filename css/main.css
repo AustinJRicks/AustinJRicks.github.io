@@ -1,0 +1,199 @@
+ #car, #bus, #Rail, #Mininus  { width: 60px;
+    height: 40px;
+    padding: 5px;
+    margin: 10px 10px 10px 10px;
+    background: #6be9e9;
+    border: 1px solid #dddddd;
+    color: #333333;
+    border-radius: 12px;
+    font-size: 1em;
+	font-weight: bold;
+	cursor:move}
+  #droppable { border: 1px solid #dddddd;}
+  body {background:#b9d3d9;
+  font-family: "Segoe UI",Arial,sans-serif;
+  font-size: 1.5vw;
+  }
+  
+  .page {
+	margin-top: 20px;
+	margin-left: 15vw;
+	margin-right: 15vw;
+	border: 2px solid #000;
+	padding:20px;
+	background:#fff;
+  }
+  .pageTitle {font-size: 2.5em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  }
+  .pageText{}
+  
+  .next {border-radius: 1.5em;
+  padding: 1em 3em 1em 3em;
+  background-color: #008CBA;
+  color: white;
+  font-size: 1em;
+  cursor:pointer;
+  float:left;}
+  
+  
+  .questionnaire{
+	font-size: 0.9em;
+    border-collapse: collapse;
+    width: 100%;  
+  }
+  
+.questionnaire td, .questionnaire th {
+    border: 1px solid #60b3c1;
+    padding: 8px;
+}
+
+  .questionnaire th {background-color: #0b788a;color: white;}  
+  .questionnaire tr:nth-child(even) {background-color: #e0fbff}
+  .questionnaire tr:hover {background-color: #ace7f0}
+  
+  .questionnaire input[type=radio],.questionnaire input[type=checkbox]{
+	width: 1.8vw;
+    height: 1.8vw;
+    position: relative;
+    top: 0.3vw;
+} 
+
+.tableMain{};
+.tableSodertalje{};
+.tableFleminsberg{};
+.tableKista{};
+.tableAlbanova{};
+.tableSolna{};
+
+input[type=text]{font-size: 1em;font-family: "Segoe UI",Arial,sans-serif;border: 2px solid #008CBA; border-radius: 4px;}
+
+input[type=radio] {
+	width: 1.2vw;
+    height: 1.2vw;
+    position: relative;
+    top: 0.1vw;}
+	
+img {width: 50%;}  
+
+label{
+display:block;
+font-weight: bold;
+} 
+
+
+.missedQuestion {
+	border-radius: 0.5em;
+	color:#790404;
+	border: 1px solid red;
+	background-color: #ffc7c7 !important;
+	}
+
+ #droppableTable .arrow {
+    width:52vw;
+    margin:0px;
+}
+
+#droppableTable .line {
+    margin-top:5px;
+    width:50vw;
+    background:black;
+    height:4px;
+    float:left;
+}
+#droppableTable .point {	
+    width: 0; 
+	height: 0; 
+	border-top: 7px solid transparent;
+	border-bottom: 7px solid transparent;
+	border-left: 2vw solid black;
+    float:right;
+}
+#droppableTable .arrowh {
+    height:52vw;
+    margin:0px;
+}
+#droppableTable .lineh{
+    margin-left:5px;
+    height:50vw;
+    background:black;
+    width:4px;
+    
+}
+#droppableTable .pointh{ 
+    width: 0; 
+ height: 0; 
+ border-left: 7px solid transparent;
+ border-right: 7px solid transparent;
+ border-bottom: 2vw solid black;
+    
+}
+
+#droppableTable .connection {
+    width:14px;
+	height:14px;
+    margin:0px;
+}
+
+#droppableTable .verticalLine{
+margin-left:5px;
+    height:5px;
+    background:black;
+    width:4px;
+}
+
+#droppableTable .horizontalLine{
+    width:9px;
+    background:black;
+    height:4px;
+    float:right;
+}
+
+#droppableTable #box {
+    padding: 1vw;
+    position: relative;
+
+}
+#droppableTable #box > div {
+    text-transform: uppercase;
+	font-weight: bold;
+    position: absolute;
+    right: 100%;
+    white-space: nowrap;
+        -webkit-transform: rotate(270deg);
+    -webkit-transform-origin: right top;
+    -moz-transform: rotate(270deg);
+    -moz-transform-origin: right top;
+    -ms-transform: rotate(270deg);
+    -ms-transform-origin: right top;
+    -o-transform: rotate(270deg);
+    -o-transform-origin: right top;
+    transform: rotate(270deg);
+    transform-origin: right top;
+}
+
+
+#droppableTable #textHorizontalLeft {
+	float:left;
+	text-transform: uppercase;
+	font-weight: bold;}
+
+#droppableTable #textHorizontalRight {
+	float:right;
+	text-transform: uppercase;
+	font-weight: bold;}
+
+
+#droppableTable  {border-collapse: collapse;}
+
+#droppableTable  td, #droppableTable  tr {padding:0px; vertical-align: top;}
+
+#droppable {
+height:52vw;
+width:52vw;
+background:#eee;
+border:0px;
+text-align: right;
+color:#999;
+}	
