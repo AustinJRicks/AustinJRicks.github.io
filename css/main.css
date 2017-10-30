@@ -1,14 +1,45 @@
+.MaxComment{
+color:red;	
+font-style: italic;	
+}
 
+.comment{
+    font-size: 0.8em;
+	color:#777;
+	font-style: italic;
+	
+}
+
+  .page {display:inline-block !important;}
+  
 /* Small landscape screens ----------- */
 @media screen and (max-width : 1200px) {
 	body{font-size: 1.5vw;}
 
+#droppableTable .arrow {width:52vw;}
+#droppableTable .line { width:50vw;}
+#droppableTable .point {border-left: 2vw solid black;}
+#droppableTable .arrowh {height:52vw;}
+#droppableTable .lineh{height:50vw;}
+#droppableTable .pointh{border-bottom: 2vw solid black;}
+#droppable {height:52vw;width:52vw;}
+#colorCode	{height:52vw}
+	
+	
 }
 
 /* Larger landscape screens ----------- */
 @media screen and (min-width : 1201px) {
 		body{font-size: 16px;}
-		.page{width:1000px;margin:auto}
+		.page{width:1000px; margin:auto}
+		#droppableTable .arrow {width:810px;}
+		#droppableTable .line { width:800px;}
+		#droppableTable .point {border-left: 10px solid black;}
+		#droppableTable .arrowh {height:810px;}
+		#droppableTable .lineh{height:800px;}
+		#droppableTable .pointh{border-bottom: 10px solid black;}
+		#droppable {height:810px;width:810px;}
+		#colorCode {height:810px}
 }
 
 
@@ -68,7 +99,7 @@
   .questionnaire tr:nth-child(even) {background-color: #e0fbff}
   .questionnaire tr:hover {background-color: #ace7f0}
   
-  .questionnaire input[type=radio],.questionnaire input[type=checkbox]{
+  .questionnaire input[type=checkbox]{
 	width: 1.8vw;
     height: 1.8vw;
     position: relative;
@@ -85,10 +116,10 @@
 input[type=text]{font-size: 1em;font-family: "Segoe UI",Arial,sans-serif;border: 2px solid #008CBA; border-radius: 4px;}
 
 input[type=radio] {
-	width: 1.2vw;
-    height: 1.2vw;
+	width: 20px;
+    height: 20px;
     position: relative;
-    top: 0.1vw;}
+    top: 2px;}
 	
 img {width: 50%;}  
 
@@ -106,13 +137,11 @@ font-weight: bold;
 	}
 
  #droppableTable .arrow {
-    width:52vw;
     margin:0px;
 }
 
 #droppableTable .line {
     margin-top:5px;
-    width:50vw;
     background:black;
     height:4px;
     float:left;
@@ -122,27 +151,23 @@ font-weight: bold;
 	height: 0; 
 	border-top: 7px solid transparent;
 	border-bottom: 7px solid transparent;
-	border-left: 2vw solid black;
     float:right;
 }
 #droppableTable .arrowh {
-    height:52vw;
     margin:0px;
 }
+
 #droppableTable .lineh{
     margin-left:5px;
-    height:50vw;
     background:black;
     width:4px;
     
 }
 #droppableTable .pointh{ 
-    width: 0; 
+ width: 0; 
  height: 0; 
  border-left: 7px solid transparent;
  border-right: 7px solid transparent;
- border-bottom: 2vw solid black;
-    
 }
 
 #droppableTable .connection {
@@ -205,10 +230,27 @@ margin-left:5px;
 #droppableTable  td, #droppableTable  tr {padding:0px; vertical-align: top;}
 
 #droppable {
-height:52vw;
-width:52vw;
 background:#eee;
 border:0px;
 text-align: right;
 color:#999;
+
+background: -webkit-radial-gradient(bottom left,red 10%, yellow 50%, green 70%); /* For Safari 5.1 to 6.0 */
+background: -o-radial-gradient(bottom left,red 10%, yellow 50%, green 70%); /* For Opera 11.1 to 12.0 */
+background: -moz-radial-gradient(bottom left,red 10%, yellow 50%, green 70%); /* For Firefox 3.6 to 15 */
+background: radial-gradient(bottom left,red 10%, yellow 50%, green 70%); /* Standard syntax (must be last) */
+
+
+
 }	
+.gif{width:200px;}
+
+
+#colorCode{background: red; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(green, yellow,red); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(green, yellow,red); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(green, yellow,red); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(green, yellow,red); /* Standard syntax */
+	width:40px;
+	margin-left:80px;
+}}

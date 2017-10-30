@@ -10,6 +10,7 @@
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="logic.js"></script>
   <script>
   $( function() {
 
@@ -74,16 +75,7 @@
 	<div class="next" onclick='nextPage1()'>Next</div><div style="clear:both;"></div>
 </div>
 
-<div id="page2" class="page" style="display: none;"> 
-	<div class="pageTitle">Campus Commuting and Logistics</div>
-	<div class="pageText"><p><b>Description of the motivation</b></p><p> 
-	Due to intensively collaborations between the growing campuses KTH, KI, S&ouml;dert&ouml;rn University as well as between the companies based in S&ouml;dert&auml;lje on the south side of Stockholm city leads to increasing emissions due to logistics operations.  Despite that transport operations hardly find people&apos;s attention, the design of campus logistics impacts on health, well-being and the general environment without the lack of every student, faculty members and service providers on daily basis. However, there is little knowledge available regarding the student och employee passenger flows and logistical activities between the main campus and south campuses.</p><p><b>
-	Description the current practices and situations of campus commuting</b></p><p>
-	Since the inaugmentation last October, two south campuses, KTH S&ouml;dertalje and KTH Flemingsberg, have been established for the education and research activities. At the moment and now, there is discussion about dedicated minibus connecting south campuses to other campuses. Shuttle bus towards Kista has recently been closed, but we see the potential of the Swedish &apos;godsbussar&apos; concept for passengers and goods delivery. It is therefore valuable to know current demands of travel and delivery, and again look into the possible implementation of the Swedish &apos;godsbussar&apos;.</p><p>
-	<img src="map.png">
-	</div>
-	<div class="next" onclick='nextPage2()'>Next</div><div style="clear:both;"></div>
-</div>
+
 
 <div id="page3" style="display: none;" class="page">
 	<div class="pageTitle">Step 1 of 3</div>
@@ -95,28 +87,42 @@
 	
 	<p id="question3"><label>In what commune or city area do you live?</label><input type="text" name="q3" id="q3">
 	
-	<p id="question4"><label>Do you have a driving license? (DO WE REALLY NEED THIS QUESTION????)</label><input type="radio" name="q4" value="0" checked="checked" style="display: none;"><input type="radio" name="q4" value="1">yes <input type="radio" name="q4" value="2">no</p>
+	<p id="question4"><label>Do you have a driving license?</label><input type="radio" name="q4" value="0" checked="checked" style="display: none;"><input type="radio" name="q4" value="1">yes <input type="radio" name="q4" value="2">no</p>
 	
 	<p id="question5"><label>Do you have access to a car?</label><input type="radio" name="q5" value="0" checked="checked" style="display: none;"><input type="radio" name="q5" value="1">yes <input type="radio" name="q5" value="2">no</p>
 	
-	<p id="question6"><label>Do you have a travelcard for public transport?</label><input type="radio" name="q6" value="0" checked="checked" style="display: none;"><input type="radio" name="q6" value="1">yes <input type="radio" name="q6" value="2">no</p>
+	<p id="question6"><label>Do you use a travelcard for public transport (blue Access card)?</label><input type="radio" name="q6" value="0" checked="checked" style="display: none;"><input type="radio" name="q6" value="1">yes <input type="radio" name="q6" value="2">no</p>
 	
-	<p id="question7"><label>What could best describe your current status at KTH?</label><input type="radio" name="q7" value="0" checked="checked" style="display: none;"><input type="radio" name="q7" value="1">Student <input type="radio" name="q7" value="2">Researcher (e.g., Professors) <input type="radio" name="q7" value="3">University Employee (e.g., lectures, administrators)</p>
+	<p id="question7"><label>What could best describe your current status at KTH?</br><span class="comment">Main work or study place means the place in wich your office is located and/or majority of courses takes place</span></label><input type="radio" name="q7" value="0" checked="checked" style="display: none;"><input type="radio" name="q7" value="1">Student <input type="radio" name="q7" value="2">Researcher (e.g., Professors) <input type="radio" name="q7" value="3">University Employee (e.g., lectures, administrators)</p>
 	
 	<p id="question13a"><label>What is your main <span id="WorkOrStudy1">work or study</span> place(s)?</label><input type="checkbox" name="q13a" value="1">KTH main<input type="checkbox" name="q13a" value="2">KTH S&ouml;dert&auml;lje<input type="checkbox" name="q13a" value="3">KTH Flemingsberg<input type="checkbox" name="q13a" value="4">KTH Kista<input type="checkbox" name="q13a" value="5">KTH Albanova<input type="checkbox" name="q13a" value="6">KTH Solna</p>
 	
-	<p id="question13b"><label>How often do you visit your main <span id="WorkOrStudy2">work or study</span> place?</label><input type="radio" name="q13b" value="0" checked="checked" style="display: none;"><input type="radio" name="q13b" value="1">Every or nearly every day<input type="radio" name="q13b" value="2">A couple times per week<input type="radio" name="q13b" value="3">A couple times per month<input type="radio" name="q13b" value="4">Rarely<input type="radio" name="q13b" value="5">Never</p>
+	<p id="question13b"><label>How often do you visit your main <span id="WorkOrStudy2">work or study</span> place?<span class="MaxComment">Do you want logical check if so there will be no 8 times per week?</span></label>
+	<input type="number" name="q13b" min="0"><select name="q13ba"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select>
+	</p>
 	
 	<p id="question8"><label>How often do you use different transport modes on weekdays (Mon-Fri) at this time of the year to travel to/from KTH?</label>
-	<table class="questionnaire">
-	<tr><th></th><th>Every or nearly every day</th><th>A couple times per week</th><th>A couple times per month</th><th>Rarely</th><th>Never</th>
-	<tr id="question8a"><td>Car (single use)<input type="radio" name="q8a" value="0" checked="checked" style="display: none;"></td><td><input type="radio" name="q8a" value="1"></td><td><input type="radio" name="q8a" value="2"></td><td><input type="radio" name="q8a" value="3"></td><td><input type="radio" name="q8a" value="4"></td><td><input type="radio" name="q8a" value="5"></td></tr>
-	<tr id="question8b"><td>Car (several people in a vehicle)<input type="radio" name="q8b" value="0" checked="checked" style="display: none;"></td><td><input type="radio" name="q8b" value="1"></td><td><input type="radio" name="q8b" value="2"></td><td><input type="radio" name="q8b" value="3"></td><td><input type="radio" name="q8b" value="4"></td><td><input type="radio" name="q8b" value="5"></td></tr>
-	<tr id="question8c"><td>Public Transport<input type="radio" name="q8c" value="0" checked="checked" style="display: none;"></td><td><input type="radio" name="q8c" value="1"></td><td><input type="radio" name="q8c" value="2"></td><td><input type="radio" name="q8c" value="3"></td><td><input type="radio" name="q8c" value="4"></td><td><input type="radio" name="q8c" value="5"></td></tr>
-	<tr id="question8d"><td>Cycling<input type="radio" name="q8d" value="0" checked="checked" style="display: none;"></td><td><input type="radio" name="q8d" value="1"></td><td><input type="radio" name="q8d" value="2"></td><td><input type="radio" name="q8d" value="3"></td><td><input type="radio" name="q8d" value="4"></td><td><input type="radio" name="q8d" value="5"></td></tr>
-	<tr id="question8e"><td>Motorcycle<input type="radio" name="q8e" value="0" checked="checked" style="display: none;"></td><td><input type="radio" name="q8e" value="1"></td><td><input type="radio" name="q8e" value="2"></td><td><input type="radio" name="q8e" value="3"></td><td><input type="radio" name="q8e" value="4"></td><td><input type="radio" name="q8e" value="5"></td></tr>
-	<tr id="question8f"><td>By foot<input type="radio" name="q8f" value="0" checked="checked" style="display: none;"></td><td><input type="radio" name="q8f" value="1"></td><td><input type="radio" name="q8f" value="2"></td><td><input type="radio" name="q8f" value="3"></td><td><input type="radio" name="q8f" value="4"></td><td><input type="radio" name="q8f" value="5"></td></tr>
+	<table class="questionnaire">		
+	<tr id="question8a"><td>Car (single use)</td><td><input type="number" name="q8a1" min="0"><select name="q8a2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
+	<tr id="question8b"><td>Car (several people in a vehicle)</td><td><input type="number" name="q8b1" min="0"><select name="q8b2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
+	<tr id="question8c"><td>Public Transport</td><td><input type="number" name="q8c1" min="0"><select name="q8c2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
+	<tr id="question8d"><td>Cycling</td><td><input type="number" name="q8d1" min="0"><select name="q8d2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
+	<tr id="question8e"><td>Motorcycle</td><td><input type="number" name="q8e1" min="0"><select name="q8e2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
+	<tr id="question8f"><td>All or most of a trip is by foot</td><td><input type="number" name="q8f1" min="0"><select name="q8f2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
 	</table></p>
+	
+	
+<p id="question8"><label>What transporation mode's attributes are more important for you and which ones are less? MAKE SPACES BETWEEN RADIO LARGER</label>
+	<table class="questionnaire"> 
+	<tr><th>Attribute</th><th style="width:230px"><div style="float:left">Not important</div>	<div style="float:right">Important</div></th></tr>
+		<tr><td><b>Walking time</b></td><td><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"></td></tr>
+<tr><td><b>Fare</b></td><td><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"></td></tr>	
+<tr><td><b>CO2 emission</b></td><td><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"></td></tr>	
+<tr><td><b>Working condition</b></td><td><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"></td></tr>	
+<tr><td><b>Flexibility</b></td><td><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"></td></tr>
+</table>	
+	
+	
 	
 	</div>
 	<div class="next" onclick='nextPage3()'>Next</div><div style="clear:both;"></div>
@@ -130,63 +136,59 @@
 	
 	<p id="question10"><label>Is the congestion charge of yours (if any) paid by an employer?</label><input type="radio" name="q10" value="0" checked="checked" style="display: none;"><input type="radio" name="q10" value="1">yes <input type="radio" name="q10" value="2">no</p>
 	
-	<p id="question11"><label>What fares and tickets you usually use for travelling with public transport?</label><input type="radio" name="q11" value="0" checked="checked" style="display: none;"><input type="radio" name="q11" value="1">Single journey tickets with SL Access credit ("reskassa")</br><input type="radio" name="q11" value="2">Single journey tickets with via app, ticket machines, ticket booth or ticket agent</br><input type="radio" name="q11" value="3">Short term travelcards for 24 hours, 72 hours or 7 days</br><input type="radio" name="q11" value="4">Long term term travelcards for 30 days, 90 days or annual</p>
+	<p id="question11"><label>What fares and tickets you usually use for travelling with public transport?</label><input type="radio" name="q11" value="0" checked="checked" style="display: none;"><input type="radio" name="q11" value="1">Single journey tickets with SL Access credit ("reskassa")</br><input type="radio" name="q11" value="2">Single journey tickets with via app, ticket machines, ticket booth or ticket agent</br><input type="radio" name="q11" value="3">Short term travelcards for 24 hours, 72 hours or 7 days</br><input type="radio" name="q11" value="4">Long term travelcards for 30 days, 90 days or annual</p>
 	
 	<p id="question12"><label>Is the public transport, for instance, periodic card fare, paid by an employer?</label><input type="radio" name="q12" value="0" checked="checked" style="display: none;"><input type="radio" name="q12" value="1">yes <input type="radio" name="q12" value="2">no</p>
 	
 	
 	<p id="question13c"><label>How often do you visit additionally these campuses as a part of your <span id="WorkOrStudy3">work or studies</span>?</label><table class="questionnaire">
-	<tr><th></th><th>Every or nearly every day</th><th>A couple times per week</th><th>A couple times per month</th><th>Rarely</th><th>Never</th></tr>
-	<tr class="tableMain"><td>KTH main</td><td><input type="radio" name="q13c1" value="0" checked="checked" style="display: none;"><input type="radio" name="q13c1" value="1"></td><td><input type="radio" name="q13c1" value="2"></td><td><input type="radio" name="q13c1" value="3"></td><td><input type="radio" name="q13c1" value="4"></td><td><input type="radio" name="q13c1" value="5"></td></tr>
-	<tr class="tableSodertalje"><td>KTH S&ouml;dert&auml;lje</td><td><input type="radio" name="q13c2" value="0" checked="checked" style="display: none;"><input type="radio" name="q13c2" value="1"></td><td><input type="radio" name="q13c2" value="2"></td><td><input type="radio" name="q13c2" value="3"></td><td><input type="radio" name="q13c2" value="4"></td><td><input type="radio" name="q13c2" value="5"></td></td></tr>	
-	<tr class="tableFleminsberg"><td>KTH Fleminsberg</td><td><input type="radio" name="q13c3" value="0" checked="checked" style="display: none;"><input type="radio" name="q13c3" value="1"></td><td><input type="radio" name="q13c3" value="2"></td><td><input type="radio" name="q13c3" value="3"></td><td><input type="radio" name="q13c3" value="4"></td><td><input type="radio" name="q13c3" value="5"></td></tr>	
-	<tr class="tableKista"><td>KTH Kista</td><td><input type="radio" name="q13c4" value="0" checked="checked" style="display: none;"><input type="radio" name="q13c4" value="1"></td><td><input type="radio" name="q13c4" value="2"></td><td><input type="radio" name="q13c4" value="3"></td><td><input type="radio" name="q13c4" value="4"></td><td><input type="radio" name="q13c4" value="5"></td></tr>	
-	<tr class="tableAlbanova"><td>KTH Albanova</td><td><input type="radio" name="q13c5" value="0" checked="checked" style="display: none;"><input type="radio" name="q13c5" value="1"></td><td><input type="radio" name="q13c5" value="2"></td><td><input type="radio" name="q13c5" value="3"></td><td><input type="radio" name="q13c5" value="4"></td><td><input type="radio" name="q13c5" value="5"></td></tr>	
-	<tr class="tableSolna"><td>KTH Solna</td><td><input type="radio" name="q13c6" value="0" checked="checked" style="display: none;"><input type="radio" name="q13c6" value="1"></td><td><input type="radio" name="q13c6" value="2"></td><td><input type="radio" name="q13c6" value="3"></td><td><input type="radio" name="q13c6" value="4"></td><td><input type="radio" name="q13c6" value="5"></td></tr></table></p>
+	<tr class="tableMain"><td>KTH main</td>							<td><input type="number" name="q14a1" min="0"><select name="q14a2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
+	<tr class="tableSodertalje"><td>KTH S&ouml;dert&auml;lje</td>	<td><input type="number" name="q14b1" min="0"><select name="q14b2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
+	<tr class="tableFleminsberg"><td>KTH Fleminsberg</td>			<td><input type="number" name="q14c1" min="0"><select name="q14c2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
+	<tr class="tableKista"><td>KTH Kista</td>						<td><input type="number" name="q14d1" min="0"><select name="q14d2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
+	<tr class="tableAlbanova"><td>KTH Albanova</td>					<td><input type="number" name="q14e1" min="0"><select name="q14e2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
+	<tr class="tableSolna"><td>KTH Solna</td>						<td><input type="number" name="q14f1" min="0"><select name="q14f2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr></table></p>
+					
+					
 	
-	
-	<p id="question13d"><label>How often do you visit these campuses for education related activities (for example, visit of a lab or a libary)?</label><table class="questionnaire">
-	<tr><th></th><th>Every or nearly every day</th><th>A couple times per week</th><th>A couple times per month</th><th>Rarely</th><th>Never</th></tr>
-	<tr class="tableMain"><td>KTH main</td><td><input type="radio" name="q13d1" value="0" checked="checked" style="display: none;"><input type="radio" name="q13d1" value="1"></td><td><input type="radio" name="q13d1" value="2"></td><td><input type="radio" name="q13d1" value="3"></td><td><input type="radio" name="q13d1" value="4"></td><td><input type="radio" name="q13d1" value="5"></td></tr>
-	<tr class="tableSodertalje"><td>KTH S&ouml;dert&auml;lje</td><td><input type="radio" name="q13d2" value="0" checked="checked" style="display: none;"><input type="radio" name="q13d2" value="1"></td><td><input type="radio" name="q13d2" value="2"></td><td><input type="radio" name="q13d2" value="3"></td><td><input type="radio" name="q13d2" value="4"></td><td><input type="radio" name="q13d2" value="5"></td></tr>	
-	<tr class="tableFleminsberg"><td>KTH Fleminsberg</td><td><input type="radio" name="q13d3" value="0" checked="checked" style="display: none;"><input type="radio" name="q13d3" value="1"></td><td><input type="radio" name="q13d3" value="2"></td><td><input type="radio" name="q13d3" value="3"></td><td><input type="radio" name="q13d3" value="4"></td><td><input type="radio" name="q13d3" value="5"></td></tr>	
-	<tr class="tableKista"><td>KTH Kista</td><td><input type="radio" name="q13d4" value="0" checked="checked" style="display: none;"><input type="radio" name="q13d4" value="1"></td><td><input type="radio" name="q13d4" value="2"></td><td><input type="radio" name="q13d4" value="3"></td><td><input type="radio" name="q13d4" value="4"></td><td><input type="radio" name="q13d4" value="5"></td></tr>	
-	<tr class="tableAlbanova"><td>KTH Albanova</td><td><input type="radio" name="q13d5" value="0" checked="checked" style="display: none;"><input type="radio" name="q13d5" value="1"></td><td><input type="radio" name="q13d5" value="2"></td><td><input type="radio" name="q13d5" value="3"></td><td><input type="radio" name="q13d5" value="4"></td><td><input type="radio" name="q13d5" value="5"></td></tr>	
-	<tr class="tableSolna"><td>KTH Solna</td><td><input type="radio" name="q13d6" value="0" checked="checked" style="display: none;"><input type="radio" name="q13d6" value="1"></td><td><input type="radio" name="q13d6" value="2"></td><td><input type="radio" name="q13d6" value="3"></td><td><input type="radio" name="q13d6" value="4"></td><td><input type="radio" name="q13d6" value="5"></td></tr></table></p>
+	<p id="question13d"><label>How often do you visit these campuses for extra education related activities (for example, visit of a lab or a seminar)?</label><table class="questionnaire">
+	<tr class="tableMain"><td>KTH main</td>							<td><input type="number" name="q14a1" min="0"><select name="q14a2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
+	<tr class="tableSodertalje"><td>KTH S&ouml;dert&auml;lje</td>	<td><input type="number" name="q14b1" min="0"><select name="q14b2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
+	<tr class="tableFleminsberg"><td>KTH Fleminsberg</td>			<td><input type="number" name="q14c1" min="0"><select name="q14c2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
+	<tr class="tableKista"><td>KTH Kista</td>						<td><input type="number" name="q14d1" min="0"><select name="q14d2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
+	<tr class="tableAlbanova"><td>KTH Albanova</td>					<td><input type="number" name="q14e1" min="0"><select name="q14e2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
+	<tr class="tableSolna"><td>KTH Solna</td>						<td><input type="number" name="q14f1" min="0"><select name="q14f2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr></table></p>
 	
 	
 	<p id="question13e"><label>How often do you visit these campuses for administrative work related activities (for example, visit of othe school administration or sercive providers)?</label><table class="questionnaire">
-	<tr><th></th><th>Every or nearly every day</th><th>A couple times per week</th><th>A couple times per month</th><th>Rarely</th><th>Never</th></tr>
-	<tr class="tableMain"><td>KTH main</td><td><input type="radio" name="q13e1" value="0" checked="checked" style="display: none;"><input type="radio" name="q13e1" value="1"></td><td><input type="radio" name="q13e1" value="2"></td><td><input type="radio" name="q13e1" value="3"></td><td><input type="radio" name="q13e1" value="4"></td><td><input type="radio" name="q13e1" value="5"></td></tr>
-	<tr class="tableSodertalje"><td>KTH S&ouml;dert&auml;lje</td><td><input type="radio" name="q13e2" value="0" checked="checked" style="display: none;"><input type="radio" name="q13e2" value="1"></td><td><input type="radio" name="q13e2" value="2"></td><td><input type="radio" name="q13e2" value="3"></td><td><input type="radio" name="q13e2" value="4"></td><td><input type="radio" name="q13e2" value="5"></td></td></tr>	
-	<tr class="tableFleminsberg"><td>KTH Fleminsberg</td><td><input type="radio" name="q13e3" value="0" checked="checked" style="display: none;"><input type="radio" name="q13e3" value="1"></td><td><input type="radio" name="q13e3" value="2"></td><td><input type="radio" name="q13e3" value="3"></td><td><input type="radio" name="q13e3" value="4"></td><td><input type="radio" name="q13e3" value="5"></td></tr>	
-	<tr class="tableKista"><td>KTH Kista</td><td><input type="radio" name="q13e4" value="0" checked="checked" style="display: none;"><input type="radio" name="q13e4" value="1"></td><td><input type="radio" name="q13e4" value="2"></td><td><input type="radio" name="q13e4" value="3"></td><td><input type="radio" name="q13e4" value="4"></td><td><input type="radio" name="q13e4" value="5"></td></tr>	
-	<tr class="tableAlbanova"><td>KTH Albanova</td><td><input type="radio" name="q13e5" value="0" checked="checked" style="display: none;"><input type="radio" name="q13e5" value="1"></td><td><input type="radio" name="q13e5" value="2"></td><td><input type="radio" name="q13e5" value="3"></td><td><input type="radio" name="q13e5" value="4"></td><td><input type="radio" name="q13e5" value="5"></td></tr>	
-	<tr class="tableSolna"><td>KTH Solna</td><td><input type="radio" name="q13e6" value="0" checked="checked" style="display: none;"><input type="radio" name="q13e6" value="1"></td><td><input type="radio" name="q13e6" value="2"></td><td><input type="radio" name="q13e6" value="3"></td><td><input type="radio" name="q13e6" value="4"></td><td><input type="radio" name="q13e6" value="5"></td></tr></table></p>
+	<tr class="tableMain"><td>KTH main</td>							<td><input type="number" name="q14a1" min="0"><select name="q14a2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
+	<tr class="tableSodertalje"><td>KTH S&ouml;dert&auml;lje</td>	<td><input type="number" name="q14b1" min="0"><select name="q14b2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
+	<tr class="tableFleminsberg"><td>KTH Fleminsberg</td>			<td><input type="number" name="q14c1" min="0"><select name="q14c2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
+	<tr class="tableKista"><td>KTH Kista</td>						<td><input type="number" name="q14d1" min="0"><select name="q14d2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
+	<tr class="tableAlbanova"><td>KTH Albanova</td>					<td><input type="number" name="q14e1" min="0"><select name="q14e2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
+	<tr class="tableSolna"><td>KTH Solna</td>						<td><input type="number" name="q14f1" min="0"><select name="q14f2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr></table></p>
 	
 	
 	<p id="question13f"><label>How often do you visit these campuses for recreational activities (for example, doing sports, mingles, parties)?</label><table class="questionnaire">
-	<tr><th></th><th>Every or nearly every day</th><th>A couple times per week</th><th>A couple times per month</th><th>Rarely</th><th>Never</th></tr>
-	<tr class="tableMain"><td>KTH main</td><td><input type="radio" name="q13f1" value="0" checked="checked" style="display: none;"><input type="radio" name="q13f1" value="1"></td><td><input type="radio" name="q13f1" value="2"></td><td><input type="radio" name="q13f1" value="3"></td><td><input type="radio" name="q13f1" value="4"></td><td><input type="radio" name="q13f1" value="5"></td></tr>
-	<tr class="tableSodertalje"><td>KTH S&ouml;dert&auml;lje</td><td><input type="radio" name="q13f2" value="0" checked="checked" style="display: none;"><input type="radio" name="q13f2" value="1"></td><td><input type="radio" name="q13f2" value="2"></td><td><input type="radio" name="q13f2" value="3"></td><td><input type="radio" name="q13f2" value="4"></td><td><input type="radio" name="q13f2" value="5"></td></tr>	
-	<tr class="tableFleminsberg"><td>KTH Fleminsberg</td><td><input type="radio" name="q13f3" value="0" checked="checked" style="display: none;"><input type="radio" name="q13f3" value="1"></td><td><input type="radio" name="q13f3" value="2"></td><td><input type="radio" name="q13f3" value="3"></td><td><input type="radio" name="q13f3" value="4"></td><td><input type="radio" name="q13f3" value="5"></td></tr>	
-	<tr class="tableKista"><td>KTH Kista</td><td><input type="radio" name="q13f4" value="0" checked="checked" style="display: none;"><input type="radio" name="q13f4" value="1"></td><td><input type="radio" name="q13f4" value="2"></td><td><input type="radio" name="q13f4" value="3"></td><td><input type="radio" name="q13f4" value="4"></td><td><input type="radio" name="q13f4" value="5"></td></tr>	
-	<tr class="tableAlbanova"><td>KTH Albanova</td><td><input type="radio" name="q13f5" value="0" checked="checked" style="display: none;"><input type="radio" name="q13f5" value="1"></td><td><input type="radio" name="q13f5" value="2"></td><td><input type="radio" name="q13f5" value="3"></td><td><input type="radio" name="q13f5" value="4"></td><td><input type="radio" name="q13f5" value="5"></td></tr>	
-	<tr class="tableSolna"><td>KTH Solna</td><td><input type="radio" name="q13f6" value="0" checked="checked" style="display: none;"><input type="radio" name="q13f6" value="1"></td><td><input type="radio" name="q13f6" value="2"></td><td><input type="radio" name="q13f6" value="3"></td><td><input type="radio" name="q13f6" value="4"></td><td><input type="radio" name="q13f6" value="5"></td></tr>	</table></p>
-					
+	<tr class="tableMain"><td>KTH main</td>							<td><input type="number" name="q14a1" min="0"><select name="q14a2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
+	<tr class="tableSodertalje"><td>KTH S&ouml;dert&auml;lje</td>	<td><input type="number" name="q14b1" min="0"><select name="q14b2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
+	<tr class="tableFleminsberg"><td>KTH Fleminsberg</td>			<td><input type="number" name="q14c1" min="0"><select name="q14c2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
+	<tr class="tableKista"><td>KTH Kista</td>						<td><input type="number" name="q14d1" min="0"><select name="q14d2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
+	<tr class="tableAlbanova"><td>KTH Albanova</td>					<td><input type="number" name="q14e1" min="0"><select name="q14e2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
+	<tr class="tableSolna"><td>KTH Solna</td>						<td><input type="number" name="q14f1" min="0"><select name="q14f2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr></table></p>
+				
 					
 	<p id="question13g"><label>How many hours in average do you spend in each campus when you visit it?</label><table class="questionnaire">
-	<tr><th></th><th>2 hours or less</th><th>3 to 5 hours </th><th>6-8 hours</th><th>More than 8 hours</th><th>I don't visit this campus</th></tr>
-	<tr class="tableMain"><td>KTH main</td><td><input type="radio" name="q13g1" value="0" checked="checked" style="display: none;"><input type="radio" name="q13g1" value="1"></td><td><input type="radio" name="q13g1" value="2"></td><td><input type="radio" name="q13g1" value="3"></td><td><input type="radio" name="q13g1" value="4"></td><td><input type="radio" name="q13g1" value="5"></td></tr>
-	<tr class="tableSodertalje"><td>KTH S&ouml;dert&auml;lje</td><td><input type="radio" name="q13g2" value="0" checked="checked" style="display: none;"><input type="radio" name="q13g2" value="1"></td><td><input type="radio" name="q13g2" value="2"></td><td><input type="radio" name="q13g2" value="3"></td><td><input type="radio" name="q13g2" value="4"></td><td><input type="radio" name="q13g2" value="5"></td></tr>	
-	<tr class="tableFleminsberg"><td>KTH Fleminsberg</td><td><input type="radio" name="q13g3" value="0" checked="checked" style="display: none;"><input type="radio" name="q13g3" value="1"></td><td><input type="radio" name="q13g3" value="2"></td><td><input type="radio" name="q13g3" value="3"></td><td><input type="radio" name="q13g3" value="4"></td><td><input type="radio" name="q13g3" value="5"></td></tr>	
-	<tr class="tableKista"><td>KTH Kista</td><td><input type="radio" name="q13g4" value="0" checked="checked" style="display: none;"><input type="radio" name="q13g4" value="1"></td><td><input type="radio" name="q13g4" value="2"></td><td><input type="radio" name="q13g4" value="3"></td><td><input type="radio" name="q13g4" value="4"></td><td><input type="radio" name="q13g4" value="5"></td></tr>	
-	<tr class="tableAlbanova"><td>KTH Albanova</td><td><input type="radio" name="q13g5" value="0" checked="checked" style="display: none;"><input type="radio" name="q13g5" value="1"></td><td><input type="radio" name="q13g5" value="2"></td><td><input type="radio" name="q13g5" value="3"></td><td><input type="radio" name="q13g5" value="4"></td><td><input type="radio" name="q13g5" value="5"></td></tr>	
-	<tr class="tableSolna"><td>KTH Solna</td><td><input type="radio" name="q13g6" value="0" checked="checked" style="display: none;"><input type="radio" name="q13g6" value="1"></td><td><input type="radio" name="q13g6" value="2"></td><td><input type="radio" name="q13g6" value="3"></td><td><input type="radio" name="q13g6" value="4"></td><td><input type="radio" name="q13g6" value="5"></td>	</table></p>
-									
+	<tr class="tableMain"><td>KTH main</td>							<td><input type="number" name="q14a1" min="0"><select name="q14a2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
+	<tr class="tableSodertalje"><td>KTH S&ouml;dert&auml;lje</td>	<td><input type="number" name="q14b1" min="0"><select name="q14b2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
+	<tr class="tableFleminsberg"><td>KTH Fleminsberg</td>			<td><input type="number" name="q14c1" min="0"><select name="q14c2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
+	<tr class="tableKista"><td>KTH Kista</td>						<td><input type="number" name="q14d1" min="0"><select name="q14d2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
+	<tr class="tableAlbanova"><td>KTH Albanova</td>					<td><input type="number" name="q14e1" min="0"><select name="q14e2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
+	<tr class="tableSolna"><td>KTH Solna</td>						<td><input type="number" name="q14f1" min="0"><select name="q14f2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr></table></p>
+								
 		
 		
-	<p id="question14"><label>How often do you visit your main campus and other campuses at the same day? (BAD LANGUAGE)</label><input type="radio" name="q14" value="0" checked="checked" style="display: none;"><input type="radio" name="q14" value="1">Almost always <input type="radio" name="q14" value="2">Often<input type="radio" name="q14" value="3">Sometimes<input type="radio" name="q14" value="4">Rarely<input type="radio" name="q14" value="5">Never</p>
+	<p id="question14"><label>How often do you at least 2 campuses at the same day?</label><input type="number" name="q141" min="0"><select name="q142"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></p>
 	
 	<p id="question15"><label>What time did you usually get to KTH during the last week?</label><input type="radio" name="q15" value="0" checked="checked" style="display: none;"><input type="radio" name="q15" value="1">Before 6 am<input type="radio" name="q15" value="2">6:00-7:00 am <input type="radio" name="q15" value="3">7:00-8:00 am <input type="radio" name="q15" value="4">8:00-9:00 am <input type="radio" name="q15" value="5">9:00-10:00 am <input type="radio" name="q15" value="6">10:00 am or later</p>
 	
@@ -194,13 +196,13 @@
 	
 	<p id="question17"><label>Which one best describes your first activity after finishing one regular day at KTH?</label>
 	<table class="questionnaire">
-	<tr><th></th><th>Every or nearly every day</th><th>A couple times per week</th><th>A couple times per month</th><th>Rarely</th><th>Never</th>
-	<tr id="question17a"><td id="test">Going directly back home<input type="radio" name="q17a" value="0" checked="checked" style="display: none;"></td><td><input type="radio" name="q17a" value="1"></td><td><input type="radio" name="q17a" value="2"></td><td><input type="radio" name="q17a" value="3"></td><td><input type="radio" name="q17a" value="4"></td><td><input type="radio" name="q17a" value="5"></td></tr>
-	<tr id="question17b"><td>Shopping<input type="radio" name="q17b" value="0" checked="checked" style="display: none;"></td><td><input type="radio" name="q17b" value="1"></td><td><input type="radio" name="q17b" value="2"></td><td><input type="radio" name="q17b" value="3"></td><td><input type="radio" name="q17b" value="4"></td><td><input type="radio" name="q17b" value="5"></td></tr>
-	<tr id="question17c"><td>Studying<input type="radio" name="q17c" value="0" checked="checked" style="display: none;"></td><td><input type="radio" name="q17c" value="1"></td><td><input type="radio" name="q17c" value="2"></td><td><input type="radio" name="q17c" value="3"></td><td><input type="radio" name="q17c" value="4"></td><td><input type="radio" name="q17c" value="5"></td></tr>
-	<tr id="question17d"><td>Entertainment<input type="radio" name="q17d" value="0" checked="checked" style="display: none;"></td><td><input type="radio" name="q17d" value="1"></td><td><input type="radio" name="q17d" value="2"></td><td><input type="radio" name="q17d" value="3"></td><td><input type="radio" name="q17d" value="4"></td><td><input type="radio" name="q17d" value="5"></td></tr>
-	<tr id="question17e"><td>Picking up child<input type="radio" name="q17e" value="0" checked="checked" style="display: none;"></td><td><input type="radio" name="q17e" value="1"></td><td><input type="radio" name="q17e" value="2"></td><td><input type="radio" name="q17e" value="3"></td><td><input type="radio" name="q17e" value="4"></td><td><input type="radio" name="q17e" value="5"></td></tr>
-	<tr id="question17f"><td>Others<input type="radio" name="q17f" value="0" checked="checked" style="display: none;"></td><td><input type="radio" name="q17f" value="1"></td><td><input type="radio" name="q17f" value="2"></td><td><input type="radio" name="q17f" value="3"></td><td><input type="radio" name="q17f" value="4"></td><td><input type="radio" name="q17f" value="5"></td></tr>
+
+	<tr id="question17a"><td>Going directly back home</td><td><input type="number" name="q14e1" min="0"><select name="q14e2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
+	<tr id="question17b"><td>Shopping</td>			<td><input type="number" name="q14e1" min="0"><select name="q14e2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
+	<tr id="question17c"><td>Studying</td>			<td><input type="number" name="q14e1" min="0"><select name="q14e2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
+	<tr id="question17d"><td>Entertainment</td>		<td><input type="number" name="q14e1" min="0"><select name="q14e2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
+	<tr id="question17e"><td>Picking up child</td>	<td><input type="number" name="q14e1" min="0"><select name="q14e2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
+	<tr id="question17f"><td>Others</td>			<td><input type="number" name="q14e1" min="0"><select name="q14e2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
 	</table></p>
 	
 	</div>
@@ -213,13 +215,13 @@
 	<div class="pageText"><p>Imagine the following situation and select a mobility option: you now need to travel a daily trip between KTH main campus and one of the south campuses, for a purpose (e.g., meeting/conference/course). You have several realistic mobility options to choose from: automobile, public transport, and a dedicated minibus. An illustration of their figures and environment inside is as follows. We assume that you need to drive the car yourself if automobile is selected. Only dedicated minibus offers free Wifi and some light facilities for office on-the-go. The dedicated minibus is scheduled twice a day. The attributes are calculated according to suggestions from Google Maps, published vehicle technical data and articles on fuel consumptions, so that approximation of reality is expected.</p>
 	<table  class="questionnaire">
 	<tr><th></th><th>Automobile</th><th>Public Transport (rails+bus)</th><th>Public Transport (rails)</th><th>Minibus</th></tr>
-	<tr><td></td><td><img src="car.jpg" style="width:7em"></td><td><img src="bus.jpg" style="width:7em"></td><td><img src="train.jpg" style="width:7em"></td><td><img src="minibus.jpg" style="width:7em"></td></tr>
+	<tr><td></td><td><img src="img/car.jpg" style="width:7em"></td><td><img src="img/bus.jpg" style="width:7em"></td><td><img src="img/train.jpg" style="width:7em"></td><td><img src="img/minibus.jpg" style="width:7em"></td></tr>
 	<tr><td><b>Travel Time</b></td><td>34 min</td><td>59 min</td><td>59 min</td><td>34 min</td></tr>
+		<tr><td><b>Chance of delay</b></td><td>15%</td><td>20%</td><td>20%</td><td>15%</td></tr>
+
 	<tr><td><b>Walking time</b></td><td>0 min</td><td>20 min</td><td>20 min</td><td>0 min</td></tr>
 	<tr><td><b>Fare</b></td><td>43.78 SEK</td><td>10 SEK</td><td>10 SEK</td><td>8 SEK</td></tr>
-	<tr><td><b>Fuel</b></td><td>0.92 litre</td><td>0.19 litre</td><td>0 litre</td><td>0.83 litre</td></tr>
 	<tr><td><b>CO2 emission</b></td><td>2.43 kg</td><td>0.04 kg</td><td>0 kg</td><td>0.15 kg</td></tr>
-	<tr><td><b>Chance of delay</b></td><td>15%</td><td>20%</td><td>20%</td><td>15%</td></tr>
 	<tr><td><b>Working condition</b></td><td>Impossible</td><td>Acceptable</td><td>Acceptable</td><td>Excellent (Wifi)</td></tr>
 	<tr><td><b>Number of transfer</b></td><td>0</td><td>2</td><td>1</td><td>0</td></tr>
 	<tr><td><b>Flexibility</b></td><td>Anytime</td><td>Every 30 min</td><td>Every 30 min</td><td>2 shifts per working day</td></tr>
@@ -227,6 +229,7 @@
 	</table>
 	
 	<p>Please drag and drop your choice to the graph based on how much you prefore your choice during peak hours and during off-peak hours</p>
+	<img src="img/drop.gif" class="gif">
 	<p id="madtatoryPage5" style="display: none;" class="missedQuestion"><b>Please drag and drop all transportation choices before going to next page!</b></p>
 	<table>
 	<tr><td><div id="car" class="ui-widget-content">Car</div></td>
@@ -237,23 +240,20 @@
 <td><div id="Mininus" class="ui-widget-content">Mininus</div></td></tr></table><div style="clear:both;"></div>
 	
 	
+<tr><td><b>Travel Time</b></td>	
+	<tr><td><b>Chance of delay</b></td>
 	
-	
-	
-	
-	
-	
-	
-	
-<table id="droppableTable">
+
+<table id="droppableTable" >
 <tr><td><div id="box"><div id="importantNow">Strongly preferable during peak hours</div>
-</div></div></td><td>
+</div></td><td>
 <div class="arrowh">
 <div class="pointh"></div>
 <div class="lineh"></div>
 </div>
 </td>
-<td><div id="droppable"><div id="droppableText" style="padding:3vw">Drop in this field<div></div></td></tr>
+<td><div id="droppable"><div id="droppableText" style="padding:3vw">Drop in this field</div></div></td><td></td><td><div id="colorCode"></div></td><td>PREFERABLE<br><br>UNPREFERABLE
+</td></tr>
 <tr><td></td><td>
 <div class="connection">
 <div class="verticalLine"></div>
@@ -296,172 +296,7 @@
 	</form>
 <script>
 
-function nextPage1() {
-document.getElementById("page1").style.display = "none";
-	document.getElementById("page2").style.display = "";
-}
 
-function nextPage2() {
-document.getElementById("page2").style.display = "none";
-	document.getElementById("page3").style.display = "";
-}
-
-function nextPage3() {
-
-	var pass=true;	
-	if($("input[name='q1']:checked").val()==0) {$("#question1").addClass("missedQuestion"); pass=false; document.getElementById("madtatoryPage3").style.display = "";} else {$("#question1").removeClass("missedQuestion");}
-	if($("input[name='q2']:checked").val()==0) {$("#question2").addClass("missedQuestion"); pass=false; document.getElementById("madtatoryPage3").style.display = "";} else {$("#question2").removeClass("missedQuestion");}
-	if(document.getElementById("q3").value.length==0) {$("#question3").addClass("missedQuestion"); pass=false; document.getElementById("madtatoryPage3").style.display = "";} else {$("#question3").removeClass("missedQuestion");}
-	if($("input[name='q4']:checked").val()==0) {$("#question4").addClass("missedQuestion"); pass=false; document.getElementById("madtatoryPage3").style.display = "";} else {$("#question4").removeClass("missedQuestion");}
-	if($("input[name='q5']:checked").val()==0) {$("#question5").addClass("missedQuestion"); pass=false; document.getElementById("madtatoryPage3").style.display = "";} else {$("#question5").removeClass("missedQuestion");}
-	if($("input[name='q6']:checked").val()==0) {$("#question6").addClass("missedQuestion"); pass=false; document.getElementById("madtatoryPage3").style.display = "";} else {$("#question6").removeClass("missedQuestion");}
-	if($("input[name='q7']:checked").val()==0) {$("#question7").addClass("missedQuestion"); pass=false; document.getElementById("madtatoryPage3").style.display = "";} else {$("#question7").removeClass("missedQuestion");}
-	if($("input[name='q13a']:checked").size()==0) {$("#question13a").addClass("missedQuestion"); pass=false; document.getElementById("madtatoryPage3").style.display = "";} else {$("#question13a").removeClass("missedQuestion");}
-	if($("input[name='q13b']:checked").val()==0) {$("#question13b").addClass("missedQuestion"); pass=false; document.getElementById("madtatoryPage3").style.display = "";} else {$("#question13b").removeClass("missedQuestion");}
-	if($("input[name='q8a']:checked").val()==0) {$("#question8a").addClass("missedQuestion"); pass=false; document.getElementById("madtatoryPage3").style.display = "";} else {$("#question8a").removeClass("missedQuestion");}
-	if($("input[name='q8b']:checked").val()==0) {$("#question8b").addClass("missedQuestion"); pass=false; document.getElementById("madtatoryPage3").style.display = "";} else {$("#question8b").removeClass("missedQuestion");}
-	if($("input[name='q8c']:checked").val()==0) {$("#question8c").addClass("missedQuestion"); pass=false; document.getElementById("madtatoryPage3").style.display = "";} else {$("#question8c").removeClass("missedQuestion");}
-	if($("input[name='q8d']:checked").val()==0) {$("#question8d").addClass("missedQuestion"); pass=false; document.getElementById("madtatoryPage3").style.display = "";} else {$("#question8d").removeClass("missedQuestion");}
-	if($("input[name='q8e']:checked").val()==0) {$("#question8e").addClass("missedQuestion"); pass=false; document.getElementById("madtatoryPage3").style.display = "";} else {$("#question8e").removeClass("missedQuestion");}
-	if($("input[name='q8f']:checked").val()==0) {$("#question8f").addClass("missedQuestion"); pass=false; document.getElementById("madtatoryPage3").style.display = "";} else {$("#question8f").removeClass("missedQuestion");}
-	
-	
-	if (pass){
-		
-		
-		//if no car hide question about cars
-		if($("input[name='q5']:checked").val()==2) {
-		document.getElementById("question9").style.display = "none";
-		document.getElementById("question10").style.display = "none";
-		}
-		
-		//if no SL card hide questions about SL card
-		if($("input[name='q6']:checked").val()==2) {
-		document.getElementById("question11").style.display = "none";
-		document.getElementById("question12").style.display = "none";
-		}
-		
-		//hide about campuses where person studies or work
-		if(document.getElementsByName("q13a")[0].checked) {document.getElementsByClassName('tableMain')[0].style.display="none";document.getElementsByClassName('tableMain')[1].style.display="none";document.getElementsByClassName('tableMain')[2].style.display="none";document.getElementsByClassName('tableMain')[3].style.display="none";document.getElementsByClassName('tableMain')[4].style.display="none";}
-		if(document.getElementsByName("q13a")[1].checked) {document.getElementsByClassName('tableSodertalje')[0].style.display="none";document.getElementsByClassName('tableSodertalje')[1].style.display="none";document.getElementsByClassName('tableSodertalje')[2].style.display="none";document.getElementsByClassName('tableSodertalje')[3].style.display="none";document.getElementsByClassName('tableSodertalje')[4].style.display="none";}
-		if(document.getElementsByName("q13a")[2].checked) {document.getElementsByClassName('tableFleminsberg')[0].style.display="none";document.getElementsByClassName('tableFleminsberg')[1].style.display="none";document.getElementsByClassName('tableFleminsberg')[2].style.display="none";document.getElementsByClassName('tableFleminsberg')[3].style.display="none";document.getElementsByClassName('tableFleminsberg')[4].style.display="none";}
-		if(document.getElementsByName("q13a")[3].checked) {document.getElementsByClassName('tableKista')[0].style.display="none";document.getElementsByClassName('tableKista')[1].style.display="none";document.getElementsByClassName('tableKista')[2].style.display="none";document.getElementsByClassName('tableKista')[3].style.display="none";document.getElementsByClassName('tableKista')[4].style.display="none";}
-		if(document.getElementsByName("q13a")[4].checked) {document.getElementsByClassName('tableAlbanova')[0].style.display="none";document.getElementsByClassName('tableAlbanova')[1].style.display="none";document.getElementsByClassName('tableAlbanova')[2].style.display="none";document.getElementsByClassName('tableAlbanova')[3].style.display="none";document.getElementsByClassName('tableAlbanova')[4].style.display="none";}
-		if(document.getElementsByName("q13a")[5].checked) {document.getElementsByClassName('tableSolna')[0].style.display="none";document.getElementsByClassName('tableSolna')[1].style.display="none";document.getElementsByClassName('tableSolna')[2].style.display="none";document.getElementsByClassName('tableSolna')[3].style.display="none";document.getElementsByClassName('tableSolna')[4].style.display="none";}
-		
-		document.getElementById("page3").style.display = "none";
-		document.getElementById("page4").style.display = "";		
-					
-	}
-	
-}
-
-function nextPage4() {
-
-document.getElementsByName("q17a")[1].parentNode.parentNode.classList.add("missedQuestion");
-
-
-
-
-var pass=true;
-if($("input[name='q5']:checked").val()==1) {
-	if($("input[name='q9']:checked").val()==0) {$("#question9").addClass("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {$("#question9").removeClass("missedQuestion");}
-	if($("input[name='q10']:checked").val()==0) {$("#question10").addClass("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {$("#question10").removeClass("missedQuestion");}
-	}
-
-if($("input[name='q6']:checked").val()==1) {
-	if($("input[name='q11']:checked").val()==0) {$("#question11").addClass("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {$("#question11").removeClass("missedQuestion");}
-	if($("input[name='q12']:checked").val()==0) {$("#question12").addClass("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {$("#question12").removeClass("missedQuestion");}
-	}	
-	
-		if(document.getElementsByName("q13a")[0].checked==false){
-			if($("input[name='q13c1']:checked").val()==0) {document.getElementsByName("q13c1")[1].parentNode.parentNode.classList.add("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {document.getElementsByName("q13c1")[1].parentNode.parentNode.classList.remove("missedQuestion");}	
-			if($("input[name='q13d1']:checked").val()==0) {document.getElementsByName("q13d1")[1].parentNode.parentNode.classList.add("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {document.getElementsByName("q13d1")[1].parentNode.parentNode.classList.remove("missedQuestion");}	
-			if($("input[name='q13e1']:checked").val()==0) {document.getElementsByName("q13e1")[1].parentNode.parentNode.classList.add("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {document.getElementsByName("q13e1")[1].parentNode.parentNode.classList.remove("missedQuestion");}	
-			if($("input[name='q13f1']:checked").val()==0) {document.getElementsByName("q13f1")[1].parentNode.parentNode.classList.add("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {document.getElementsByName("q13f1")[1].parentNode.parentNode.classList.remove("missedQuestion");}	
-			if($("input[name='q13g1']:checked").val()==0) {document.getElementsByName("q13g1")[1].parentNode.parentNode.classList.add("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {document.getElementsByName("q13g1")[1].parentNode.parentNode.classList.remove("missedQuestion");}	
-		}
-
-
-		if(document.getElementsByName("q13a")[1].checked==false){
-			if($("input[name='q13c2']:checked").val()==0) {document.getElementsByName("q13c2")[1].parentNode.parentNode.classList.add("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {document.getElementsByName("q13c2")[1].parentNode.parentNode.classList.remove("missedQuestion");}	
-			if($("input[name='q13d2']:checked").val()==0) {document.getElementsByName("q13d2")[1].parentNode.parentNode.classList.add("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {document.getElementsByName("q13d2")[1].parentNode.parentNode.classList.remove("missedQuestion");}	
-			if($("input[name='q13e2']:checked").val()==0) {document.getElementsByName("q13e2")[1].parentNode.parentNode.classList.add("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {document.getElementsByName("q13e2")[1].parentNode.parentNode.classList.remove("missedQuestion");}	
-			if($("input[name='q13f2']:checked").val()==0) {document.getElementsByName("q13f2")[1].parentNode.parentNode.classList.add("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {document.getElementsByName("q13f2")[1].parentNode.parentNode.classList.remove("missedQuestion");}	
-			if($("input[name='q13g2']:checked").val()==0) {document.getElementsByName("q13g2")[1].parentNode.parentNode.classList.add("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {document.getElementsByName("q13g2")[1].parentNode.parentNode.classList.remove("missedQuestion");}	
-
-		}
-
-		if(document.getElementsByName("q13a")[2].checked==false){
-			if($("input[name='q13c3']:checked").val()==0) {document.getElementsByName("q13c3")[1].parentNode.parentNode.classList.add("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {document.getElementsByName("q13c3")[1].parentNode.parentNode.classList.remove("missedQuestion");}	
-			if($("input[name='q13d3']:checked").val()==0) {document.getElementsByName("q13d3")[1].parentNode.parentNode.classList.add("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {document.getElementsByName("q13d3")[1].parentNode.parentNode.classList.remove("missedQuestion");}	
-			if($("input[name='q13e3']:checked").val()==0) {document.getElementsByName("q13e3")[1].parentNode.parentNode.classList.add("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {document.getElementsByName("q13e3")[1].parentNode.parentNode.classList.remove("missedQuestion");}	
-			if($("input[name='q13f3']:checked").val()==0) {document.getElementsByName("q13f3")[1].parentNode.parentNode.classList.add("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {document.getElementsByName("q13f3")[1].parentNode.parentNode.classList.remove("missedQuestion");}	
-			if($("input[name='q13g3']:checked").val()==0) {document.getElementsByName("q13g3")[1].parentNode.parentNode.classList.add("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {document.getElementsByName("q13g3")[1].parentNode.parentNode.classList.remove("missedQuestion");}	
-
-		}
-		
-		if(document.getElementsByName("q13a")[3].checked==false){
-			if($("input[name='q13c4']:checked").val()==0) {document.getElementsByName("q13c4")[1].parentNode.parentNode.classList.add("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {document.getElementsByName("q13c4")[1].parentNode.parentNode.classList.remove("missedQuestion");}	
-			if($("input[name='q13d4']:checked").val()==0) {document.getElementsByName("q13d4")[1].parentNode.parentNode.classList.add("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {document.getElementsByName("q13d4")[1].parentNode.parentNode.classList.remove("missedQuestion");}	
-			if($("input[name='q13e4']:checked").val()==0) {document.getElementsByName("q13e4")[1].parentNode.parentNode.classList.add("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {document.getElementsByName("q13e4")[1].parentNode.parentNode.classList.remove("missedQuestion");}	
-			if($("input[name='q13f4']:checked").val()==0) {document.getElementsByName("q13f4")[1].parentNode.parentNode.classList.add("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {document.getElementsByName("q13f4")[1].parentNode.parentNode.classList.remove("missedQuestion");}	
-			if($("input[name='q13g4']:checked").val()==0) {document.getElementsByName("q13g4")[1].parentNode.parentNode.classList.add("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {document.getElementsByName("q13g4")[1].parentNode.parentNode.classList.remove("missedQuestion");}	
-		}
-		
-
-		if(document.getElementsByName("q13a")[4].checked==false){
-			if($("input[name='q13c5']:checked").val()==0) {document.getElementsByName("q13c5")[1].parentNode.parentNode.classList.add("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {document.getElementsByName("q13c5")[1].parentNode.parentNode.classList.remove("missedQuestion");}	
-			if($("input[name='q13d5']:checked").val()==0) {document.getElementsByName("q13d5")[1].parentNode.parentNode.classList.add("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {document.getElementsByName("q13d5")[1].parentNode.parentNode.classList.remove("missedQuestion");}	
-			if($("input[name='q13e5']:checked").val()==0) {document.getElementsByName("q13e5")[1].parentNode.parentNode.classList.add("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {document.getElementsByName("q13e5")[1].parentNode.parentNode.classList.remove("missedQuestion");}	
-			if($("input[name='q13f5']:checked").val()==0) {document.getElementsByName("q13f5")[1].parentNode.parentNode.classList.add("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {document.getElementsByName("q13f5")[1].parentNode.parentNode.classList.remove("missedQuestion");}	
-			if($("input[name='q13g5']:checked").val()==0) {document.getElementsByName("q13g5")[1].parentNode.parentNode.classList.add("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {document.getElementsByName("q13g5")[1].parentNode.parentNode.classList.remove("missedQuestion");}	
-		}
-		
-
-		if(document.getElementsByName("q13a")[5].checked==false){
-			if($("input[name='q13c6']:checked").val()==0) {document.getElementsByName("q13c6")[1].parentNode.parentNode.classList.add("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {document.getElementsByName("q13c6")[1].parentNode.parentNode.classList.remove("missedQuestion");}	
-			if($("input[name='q13d6']:checked").val()==0) {document.getElementsByName("q13d6")[1].parentNode.parentNode.classList.add("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {document.getElementsByName("q13d6")[1].parentNode.parentNode.classList.remove("missedQuestion");}		
-			if($("input[name='q13e6']:checked").val()==0) {document.getElementsByName("q13e6")[1].parentNode.parentNode.classList.add("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {document.getElementsByName("q13e6")[1].parentNode.parentNode.classList.remove("missedQuestion");}		
-			if($("input[name='q13f6']:checked").val()==0) {document.getElementsByName("q13f6")[1].parentNode.parentNode.classList.add("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {document.getElementsByName("q13f6")[1].parentNode.parentNode.classList.remove("missedQuestion");}		
-			if($("input[name='q13g6']:checked").val()==0) {document.getElementsByName("q13g6")[1].parentNode.parentNode.classList.add("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {document.getElementsByName("q13g6")[1].parentNode.parentNode.classList.remove("missedQuestion");}	
-		}
-		
-		
-
-	
-	if($("input[name='q14']:checked").val()==0) {$("#question14").addClass("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {$("#question14").removeClass("missedQuestion");}	
-	if($("input[name='q15']:checked").val()==0) {$("#question15").addClass("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {$("#question15").removeClass("missedQuestion");}	
-	if($("input[name='q16']:checked").val()==0) {$("#question16").addClass("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {$("#question16").removeClass("missedQuestion");}	
-	if($("input[name='q17a']:checked").val()==0) {$("#question17a").addClass("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {$("#question17a").removeClass("missedQuestion");}	
-	if($("input[name='q17b']:checked").val()==0) {$("#question17b").addClass("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {$("#question17b").removeClass("missedQuestion");}	
-	if($("input[name='q17c']:checked").val()==0) {$("#question17c").addClass("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {$("#question17c").removeClass("missedQuestion");}	
-	if($("input[name='q17d']:checked").val()==0) {$("#question17d").addClass("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {$("#question17d").removeClass("missedQuestion");}	
-	if($("input[name='q17e']:checked").val()==0) {$("#question17e").addClass("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {$("#question17e").removeClass("missedQuestion");}	
-	if($("input[name='q17f']:checked").val()==0) {$("#question17f").addClass("missedQuestion"); pass=false; document.getElementById("madtatoryPage4").style.display = "";} else {$("#question17f").removeClass("missedQuestion");}	
-	
-
-if (pass){
-		document.getElementById("page4").style.display = "none";
-		document.getElementById("page5").style.display = "";
-		
-		}			
-	
-}
-function nextPage5() {
-
-	var pass=true;
-	
-	if(document.getElementById("carLeft").value.length==0) {pass=false; document.getElementById("madtatoryPage5").style.display = "";}
-	if(document.getElementById("busLeft").value.length==0) {pass=false; document.getElementById("madtatoryPage5").style.display = "";}
-	if(document.getElementById("railLeft").value.length==0) {pass=false; document.getElementById("madtatoryPage5").style.display = "";}
-	if(document.getElementById("miniLeft").value.length==0) {pass=false; document.getElementById("madtatoryPage5").style.display = "";}
-
-	if (pass){
-		document.getElementById("page5").style.display = "none";
-		document.getElementById("MobilityForm").submit();
-	}
-}
 
 </script>
 
