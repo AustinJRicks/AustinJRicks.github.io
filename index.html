@@ -66,151 +66,262 @@
 </head>
 <body>
 <form id="MobilityForm" action="submitted.php" method="post">
-<div id="page1" class="page">
+<div id="intro" class="page">
 	<div class="pageTitle">We need you to participate in the sustainable campus research!</div>
 	<div class="pageText"><p>This survey collects students, university employees and researchers&apos; attitudes towards mobility between  campuses of KTH and other campuses in different places in Stockholm. You can read more about the project <a href="about.html">here</a>.<p>
 	<p>	The respondents are welcomed to attend the transport survey. We designed this survey, formulated the contents in our best way to collect mobility demands of students and university employees in south campuses, but other interested individuals are also encouraged to share their choices. Your responses are treated with 100% confidentiality. The identity will be hidden from any third parties&apos; point of view.</p>
-	<p>As the reward, a couple of ICA presentkort, a gift worth of 500 SEK, supermarket card will be given. In case that you are interested in a lottery selection, you can fill in the email/phone contact information and delivered to your place.</p>
+	<p>As the reward, a couple of ICA presentkort, a gift worth of 500 SEK, supermarket card will be given. In case that you are interested in a lottery selection, you can fill in the email contact information.</p>
 	<img src="img/kth-campus.jpg"></br></br></div>
+	<div class="next" onclick='nextIntro()'>Next</div><div style="clear:both;"></div>
+</div>
+
+
+
+<div id="page1" style="display: none;" class="page">
+	<div class="pageTitle">Step 1 of 3</div>
+	<div class="pageText">
+	<p id="mandatoryPage1" style="display: none;" class="missedQuestion"><b>Please fill all fields before going to next page!</b></p>
+	
+	<p id="question1">
+		<label for "q1">Gender<span class="mandatory">*</span></label>
+		<input type="radio" name="q1" value="NA" checked="checked" style="display: none;">
+		<input type="radio" name="q1" value="Male"/>Male
+		<input type="radio" name="q1" value="Female"/>Female
+		<input type="radio" name="q1" value="Other"/>Other
+	</p>
+	
+	<p  id="question2">
+		<label for "q2">Age</label>
+		<input type="text" name="q2" id="q2"/>
+	</p>
+	
+	<p  id="question3">
+		<label for "q3">What is the postal/zip code of your home location?</label>
+		<input type="text" name="q3" id="3"/>
+	</p>
+		
+	<p id="question4">
+		<label for "q4">What is the best describtion of your current status at KTH?<span class="mandatory">*</span></label>
+		<input type="radio" name="q4" value="NA" checked="checked" style="display: none;"/>
+		<input type="radio" name="q4" value="student"/>student 
+		<input type="radio" name="q4" value="researcher/teacher"/>researcher/teacher  (e.g., professor) 
+		<input type="radio" name="q4" value="managers"/>manager (e.g., administrator)
+		<input type="radio" name="q4" value="4"/>other employee
+	</p>
+	
+	<p id="question5">
+		<label for "q5">What is your main work or study place(s)?<span class="mandatory">*</span> <br/><span class="comment">(Main work or study place means the place in which your office is located and/or majority of courses takes place)</span></label>
+		<input type="radio" name="q5" value="NA" checked="checked" style="display: none;"/>
+		<input type="radio" name="q5" value="Main">KTH main
+		<input type="radio" name="q5" value="Sodertalje">KTH S&ouml;dert&auml;lje
+		<input type="radio" name="q5" value="Flemingsberg">KTH Flemingsberg
+		<input type="radio" name="q5" value="Kista">KTH Kista
+		<input type="radio" name="q5" value="Albanova">KTH AlbaNova
+		<input type="radio" name="q5" value="Solna">KTH Solna
+	</p>
+	
+	
+	<p id="question6">
+		<label for "q6a">How often do you visit your main work or study place?<span class="mandatory">*</span></label>
+		<input type="number" name="q6a" id="q6a" min="0"/>
+		<select name="q6b">
+			<option value=" times per week" selected>times per week</option>
+			<option value=" times per month">times per month</option>
+			<option value=" times per year">times per year</option>
+		</select>
+	</p>
+	
+	<p id="questions7-12">
+		<label>How often do you use different transport modes on weekdays at this time of the year to travel to/from KTH?<span class="mandatory">*</span></br></label>
+		<table class="questionnaire">		
+			<tr id="question7">
+				<td>Car (single use)</td>
+				<td>
+					<input type="number" name="q7a" min="0" id="q7a">
+					<select name="q7b">
+						<option value=" times per week" selected>times per week</option>
+						<option value=" times per month">times per month</option>
+						<option value=" times per year">times per year</option>
+					</select>
+				</td>
+			</tr>			
+			<tr id="question8">
+				<td>Car (several people in a vehicle)</td>
+				<td>
+					<input type="number" name="q8a" min="0" id="q8a">
+					<select name="q8b">
+						<option value=" times per week" selected>times per week</option>
+						<option value=" times per month">times per month</option>
+						<option value=" times per year">times per year</option>
+					</select>
+				</td>
+			</tr>
+			<tr id="question9">
+				<td>Public Transport</td>
+				<td>
+					<input type="number" name="q9a" min="0" id="q9a">
+					<select name="q9b">
+						<option value=" times per week" selected>times per week</option>
+						<option value=" times per month">times per month</option>
+						<option value=" times per year">times per year</option>
+					</select>
+				</td>
+			</tr>
+			<tr id="question10">
+				<td>Cycling</td>
+				<td>
+					<input type="number" name="q10a" min="0" id="q10a">
+					<select name="q10b">
+						<option value=" times per week" selected>times per week</option>
+						<option value=" times per month">times per month</option>
+						<option value=" times per year">times per year</option>
+					</select>
+				</td>
+			</tr>
+			<tr id="question11">
+				<td>Motorcycle</td>
+				<td>
+					<input type="number" name="q11a" min="0" id="q11a">
+					<select name="q11b">
+						<option value=" times per week" selected>times per week</option>
+						<option value=" times per month">times per month</option>
+						<option value=" times per year">times per year</option>
+					</select>
+				</td>
+			</tr>
+			<tr id="question12">
+
+				<td>All or most of a trip is by foot</td>
+				<td>
+					<input type="number" name="q12a" min="0" id="q12a">
+					<select name="q12b">
+						<option value=" times per week" selected>times per week</option>
+						<option value=" times per month">times per month</option>
+						<option value=" times per year">times per year</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+	</p>
+
+	<p id="question13">
+		<label for "q13">What is the tolerance of being late?<span class="mandatory">*</span></label>
+		<input type="radio" name="q13" value="NA" checked="checked" style="display: none;">
+		<input type="radio" name="q13" value="0"/>zero tolerance 
+		<input type="radio" name="q13" value="-15"/>less than 15 minutes
+		<input type="radio" name="q13" value="15-30"/>15-30 minutes
+		<input type="radio" name="q13" value="30-60"/>30-60 minutes
+		<input type="radio" name="q13" value="60+"/>more than 1 hour
+	</p>	
+	
+	
+	<br/>
+	</div>
 	<div class="next" onclick='nextPage1()'>Next</div><div style="clear:both;"></div>
 </div>
 
+<div id="page2" style="display: none;" class="page">
+	<div class="pageTitle">Step 2 of 3</div>
+<h2>Answer these questions about your last week</h2>
+	<div class="pageText">
+	
+	<p id="mandatoryPage2" style="display: none;" class="missedQuestion"><b>Please fill all fields before going to next page!</b></p>
+
+	<p id="question14">
+		<label for "q14">What time did you usually get to KTH during the last week?<span class="mandatory">*</span></label>
+		<input type="radio" name="q14" value="NA" checked="checked" style="display: none;">
+		<input type="radio" name="q14" value="-6"/>before 6:00 am  
+		<input type="radio" name="q14" value="6-7"/>6:00-7:00 am 
+		<input type="radio" name="q14" value="7-8"/>7:00-8:00 am 
+		<input type="radio" name="q14" value="8-9"/>8:00-9:00 am 
+		<input type="radio" name="q14" value="9-10"/>9:00-10:00 am 
+		<input type="radio" name="q14" value="10+"/>after 10:00 am
+	</p>		
+
+	<p id="question15">
+		<label for "q15">What time did you usually get to KTH during the last week?<span class="mandatory">*</span></label>
+		<input type="radio" name="q15" value="NA" checked="checked" style="display: none;">
+		<input type="radio" name="q15" value="-16"/>before 4:00 pm   
+		<input type="radio" name="q15" value="16-17"/>4:00-5:00 pm   
+		<input type="radio" name="q15" value="17-18"/>5:00-6:00 pm 
+		<input type="radio" name="q15" value="18-19"/>6:00-7:00 pm   
+		<input type="radio" name="q15" value="19+"/>after 7:00 pm
+	</p>		
+
+	<p id="questions16-21">
+		<label>How often did you visit additionally these campuses?<span class="mandatory">*</span></label>
+		<table class="questionnaire">
+			<tr id="question16">
+				<td>KTH main</td>
+				<td><input type="number" name="q16" min="0" id="q16"> times per week</td>
+			</tr>
+			<tr id="question17">
+				<td>KTH S&ouml;dert&auml;lje</td>
+				<td><input type="number" name="q17" min="0" id="q17"> times per week</td>
+			</tr>
+			<tr id="question18">
+				<td>KTH Fleminsberg</td>
+				<td><input type="number" name="q18" min="0" id="q18"> times per week</td>
+			</tr>
+			<tr id="question19">
+				<td>KTH Kista</td>
+				<td><input type="number" name="q19" min="0" id="q19"> times per week</td>
+			</tr>
+			<tr id="question20">
+				<td>KTH AlbaNova</td>
+				<td><input type="number" name="q20" min="0" id="q20"> times per week</td>
+			</tr>
+			<tr id="question21">
+				<td>KTH Solna</td>
+				<td><input type="number" name="q21" min="0" id="q21"> times per week</td>
+			</tr>
+		</table>
+	</p>
+		
+	<p id="questions22-27">
+		<label>What time did you start your travel to visit other campuses?<span class="mandatory">*</span></label>
+		<table class="questionnaire">
+			<tr id="question22">
+				<td>Before 8:00 am</td>
+				<td><input type="number" name="q22" min="0" id="q22"/> times per week</td>
+			</tr>
+			<tr id="question23">
+				<td>8:00-10:00 am </td>
+				<td><input type="number" name="q23" min="0" id="q23"/> times per week</td>
+			</tr>
+			<tr id="question24">
+				<td>10:00-12:00 am </td>
+				<td><input type="number" name="q24" min="0" id="q24"/> times per week</td>
+			</tr>
+			<tr id="question25">
+				<td>12:00 pm-2:00 pm</td>
+				<td><input type="number" name="q25" min="0" id="q25"/> times per week</td>
+			</tr>
+			<tr id="question26">
+				<td>2:00-4:00 pm</td>
+				<td><input type="number" name="q26" min="0" id="q26"/> times per week</td>
+			</tr>
+			<tr id="question27">
+				<td>After 4:00 pm</td>
+				<td><input type="number" name="q27" min="0" id="q27"/> times per week</td>
+			</tr>
+		</table>
+	</p>
+		
+		
+	<p  id="question28">
+		<label for "q28">How many hours in average did you spend in each campus when you visit it?<span class="mandatory">*</span></label>
+		<input type="number" name="q28" id="q28"/>
+	</p>
+<br/>
+	
+	
+	</div>
+	<div class="next" onclick='nextPage2()'>Next</div><div style="clear:both;"></div>
+</div>
 
 
 <div id="page3" style="display: none;" class="page">
-	<div class="pageTitle">Step 1 of 3</div>
-	<div class="pageText">
-	<p id="madtatoryPage3" style="display: none;" class="missedQuestion"><b>Please fill all fields before going to next page!</b></p>
-	<p id="question1"><label>Gender</label><input type="radio" name="q1" value="0" checked="checked" style="display: none;"><input type="radio" name="q1" value="1">Male <input type="radio" name="q1" value="2">Female <input type="radio" name="q1" value="3">Other </p>
-	
-	<p  id="question2"><label>Age</label><input type="radio" name="q2" value="0" checked="checked" style="display: none;"><input type="radio" name="q2" value="1">Below 18 years <input type="radio" name="q2" value="2">18-25 years <input type="radio" name="q2" value="3">26-35 years<input type="radio" name="q2" value="4">36-55 years<input type="radio" name="q2" value="5">56-65 years<input type="radio" name="q2" value="6">Over 65 years</p>
-	
-	<p id="question3"><label>In what commune or city area do you live?</label><input type="text" name="q3" id="q3">
-	
-	<p id="question4"><label>Do you have a driving license?</label><input type="radio" name="q4" value="0" checked="checked" style="display: none;"><input type="radio" name="q4" value="1">yes <input type="radio" name="q4" value="2">no</p>
-	
-	<p id="question5"><label>Do you have access to a car?</label><input type="radio" name="q5" value="0" checked="checked" style="display: none;"><input type="radio" name="q5" value="1">yes <input type="radio" name="q5" value="2">no</p>
-	
-	<p id="question6"><label>Do you use a travelcard for public transport (blue Access card)?</label><input type="radio" name="q6" value="0" checked="checked" style="display: none;"><input type="radio" name="q6" value="1">yes <input type="radio" name="q6" value="2">no</p>
-	
-	<p id="question7"><label>What could best describe your current status at KTH?</br><span class="comment">Main work or study place means the place in wich your office is located and/or majority of courses takes place</span></label><input type="radio" name="q7" value="0" checked="checked" style="display: none;"><input type="radio" name="q7" value="1">Student <input type="radio" name="q7" value="2">Researcher (e.g., Professors) <input type="radio" name="q7" value="3">University Employee (e.g., lectures, administrators)</p>
-	
-	<p id="question13a"><label>What is your main <span id="WorkOrStudy1">work or study</span> place(s)?</label><input type="checkbox" name="q13a" value="1">KTH main<input type="checkbox" name="q13a" value="2">KTH S&ouml;dert&auml;lje<input type="checkbox" name="q13a" value="3">KTH Flemingsberg<input type="checkbox" name="q13a" value="4">KTH Kista<input type="checkbox" name="q13a" value="5">KTH Albanova<input type="checkbox" name="q13a" value="6">KTH Solna</p>
-	
-	<p id="question13b"><label>How often do you visit your main <span id="WorkOrStudy2">work or study</span> place?<span class="MaxComment">Do you want logical check if so there will be no 8 times per week?</span></label>
-	<input type="number" name="q13b" min="0"><select name="q13ba"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select>
-	</p>
-	
-	<p id="question8"><label>How often do you use different transport modes on weekdays (Mon-Fri) at this time of the year to travel to/from KTH?</label>
-	<table class="questionnaire">		
-	<tr id="question8a"><td>Car (single use)</td><td><input type="number" name="q8a1" min="0"><select name="q8a2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
-	<tr id="question8b"><td>Car (several people in a vehicle)</td><td><input type="number" name="q8b1" min="0"><select name="q8b2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
-	<tr id="question8c"><td>Public Transport</td><td><input type="number" name="q8c1" min="0"><select name="q8c2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
-	<tr id="question8d"><td>Cycling</td><td><input type="number" name="q8d1" min="0"><select name="q8d2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
-	<tr id="question8e"><td>Motorcycle</td><td><input type="number" name="q8e1" min="0"><select name="q8e2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
-	<tr id="question8f"><td>All or most of a trip is by foot</td><td><input type="number" name="q8f1" min="0"><select name="q8f2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
-	</table></p>
-	
-	
-<p id="question8"><label>What transporation mode's attributes are more important for you and which ones are less? MAKE SPACES BETWEEN RADIO LARGER</label>
-	<table class="questionnaire"> 
-	<tr><th>Attribute</th><th style="width:230px"><div style="float:left">Not important</div>	<div style="float:right">Important</div></th></tr>
-		<tr><td><b>Walking time</b></td><td><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"></td></tr>
-<tr><td><b>Fare</b></td><td><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"></td></tr>	
-<tr><td><b>CO2 emission</b></td><td><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"></td></tr>	
-<tr><td><b>Working condition</b></td><td><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"></td></tr>	
-<tr><td><b>Flexibility</b></td><td><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"><input type="radio" name="q1" value="1"></td></tr>
-</table>	
-	
-	
-	
-	</div>
-	<div class="next" onclick='nextPage3()'>Next</div><div style="clear:both;"></div>
-</div>
-
-<div id="page4" style="display: none;" class="page">
-	<div class="pageTitle">Step 2 of 3</div>
-	<div class="pageText">
-	<p id="madtatoryPage4" style="display: none;" class="missedQuestion"><b>Please fill all fields before going to next page!</b></p>
-	<p id="question9"><label>Is the parking fee of yours (if any) paid by an employer?</label><input type="radio" name="q9" value="0" checked="checked" style="display: none;"><input type="radio" name="q9" value="1">yes <input type="radio" name="q9" value="2">no</p>
-	
-	<p id="question10"><label>Is the congestion charge of yours (if any) paid by an employer?</label><input type="radio" name="q10" value="0" checked="checked" style="display: none;"><input type="radio" name="q10" value="1">yes <input type="radio" name="q10" value="2">no</p>
-	
-	<p id="question11"><label>What fares and tickets you usually use for travelling with public transport?</label><input type="radio" name="q11" value="0" checked="checked" style="display: none;"><input type="radio" name="q11" value="1">Single journey tickets with SL Access credit ("reskassa")</br><input type="radio" name="q11" value="2">Single journey tickets with via app, ticket machines, ticket booth or ticket agent</br><input type="radio" name="q11" value="3">Short term travelcards for 24 hours, 72 hours or 7 days</br><input type="radio" name="q11" value="4">Long term travelcards for 30 days, 90 days or annual</p>
-	
-	<p id="question12"><label>Is the public transport, for instance, periodic card fare, paid by an employer?</label><input type="radio" name="q12" value="0" checked="checked" style="display: none;"><input type="radio" name="q12" value="1">yes <input type="radio" name="q12" value="2">no</p>
-	
-	
-	<p id="question13c"><label>How often do you visit additionally these campuses as a part of your <span id="WorkOrStudy3">work or studies</span>?</label><table class="questionnaire">
-	<tr class="tableMain"><td>KTH main</td>							<td><input type="number" name="q14a1" min="0"><select name="q14a2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
-	<tr class="tableSodertalje"><td>KTH S&ouml;dert&auml;lje</td>	<td><input type="number" name="q14b1" min="0"><select name="q14b2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
-	<tr class="tableFleminsberg"><td>KTH Fleminsberg</td>			<td><input type="number" name="q14c1" min="0"><select name="q14c2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
-	<tr class="tableKista"><td>KTH Kista</td>						<td><input type="number" name="q14d1" min="0"><select name="q14d2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
-	<tr class="tableAlbanova"><td>KTH Albanova</td>					<td><input type="number" name="q14e1" min="0"><select name="q14e2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
-	<tr class="tableSolna"><td>KTH Solna</td>						<td><input type="number" name="q14f1" min="0"><select name="q14f2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr></table></p>
-					
-					
-	
-	<p id="question13d"><label>How often do you visit these campuses for extra education related activities (for example, visit of a lab or a seminar)?</label><table class="questionnaire">
-	<tr class="tableMain"><td>KTH main</td>							<td><input type="number" name="q14a1" min="0"><select name="q14a2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
-	<tr class="tableSodertalje"><td>KTH S&ouml;dert&auml;lje</td>	<td><input type="number" name="q14b1" min="0"><select name="q14b2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
-	<tr class="tableFleminsberg"><td>KTH Fleminsberg</td>			<td><input type="number" name="q14c1" min="0"><select name="q14c2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
-	<tr class="tableKista"><td>KTH Kista</td>						<td><input type="number" name="q14d1" min="0"><select name="q14d2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
-	<tr class="tableAlbanova"><td>KTH Albanova</td>					<td><input type="number" name="q14e1" min="0"><select name="q14e2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
-	<tr class="tableSolna"><td>KTH Solna</td>						<td><input type="number" name="q14f1" min="0"><select name="q14f2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr></table></p>
-	
-	
-	<p id="question13e"><label>How often do you visit these campuses for administrative work related activities (for example, visit of othe school administration or sercive providers)?</label><table class="questionnaire">
-	<tr class="tableMain"><td>KTH main</td>							<td><input type="number" name="q14a1" min="0"><select name="q14a2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
-	<tr class="tableSodertalje"><td>KTH S&ouml;dert&auml;lje</td>	<td><input type="number" name="q14b1" min="0"><select name="q14b2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
-	<tr class="tableFleminsberg"><td>KTH Fleminsberg</td>			<td><input type="number" name="q14c1" min="0"><select name="q14c2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
-	<tr class="tableKista"><td>KTH Kista</td>						<td><input type="number" name="q14d1" min="0"><select name="q14d2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
-	<tr class="tableAlbanova"><td>KTH Albanova</td>					<td><input type="number" name="q14e1" min="0"><select name="q14e2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
-	<tr class="tableSolna"><td>KTH Solna</td>						<td><input type="number" name="q14f1" min="0"><select name="q14f2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr></table></p>
-	
-	
-	<p id="question13f"><label>How often do you visit these campuses for recreational activities (for example, doing sports, mingles, parties)?</label><table class="questionnaire">
-	<tr class="tableMain"><td>KTH main</td>							<td><input type="number" name="q14a1" min="0"><select name="q14a2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
-	<tr class="tableSodertalje"><td>KTH S&ouml;dert&auml;lje</td>	<td><input type="number" name="q14b1" min="0"><select name="q14b2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
-	<tr class="tableFleminsberg"><td>KTH Fleminsberg</td>			<td><input type="number" name="q14c1" min="0"><select name="q14c2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
-	<tr class="tableKista"><td>KTH Kista</td>						<td><input type="number" name="q14d1" min="0"><select name="q14d2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
-	<tr class="tableAlbanova"><td>KTH Albanova</td>					<td><input type="number" name="q14e1" min="0"><select name="q14e2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
-	<tr class="tableSolna"><td>KTH Solna</td>						<td><input type="number" name="q14f1" min="0"><select name="q14f2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr></table></p>
-				
-					
-	<p id="question13g"><label>How many hours in average do you spend in each campus when you visit it?</label><table class="questionnaire">
-	<tr class="tableMain"><td>KTH main</td>							<td><input type="number" name="q14a1" min="0"><select name="q14a2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
-	<tr class="tableSodertalje"><td>KTH S&ouml;dert&auml;lje</td>	<td><input type="number" name="q14b1" min="0"><select name="q14b2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
-	<tr class="tableFleminsberg"><td>KTH Fleminsberg</td>			<td><input type="number" name="q14c1" min="0"><select name="q14c2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
-	<tr class="tableKista"><td>KTH Kista</td>						<td><input type="number" name="q14d1" min="0"><select name="q14d2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
-	<tr class="tableAlbanova"><td>KTH Albanova</td>					<td><input type="number" name="q14e1" min="0"><select name="q14e2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>	
-	<tr class="tableSolna"><td>KTH Solna</td>						<td><input type="number" name="q14f1" min="0"><select name="q14f2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr></table></p>
-								
-		
-		
-	<p id="question14"><label>How often do you at least 2 campuses at the same day?</label><input type="number" name="q141" min="0"><select name="q142"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></p>
-	
-	<p id="question15"><label>What time did you usually get to KTH during the last week?</label><input type="radio" name="q15" value="0" checked="checked" style="display: none;"><input type="radio" name="q15" value="1">Before 6 am<input type="radio" name="q15" value="2">6:00-7:00 am <input type="radio" name="q15" value="3">7:00-8:00 am <input type="radio" name="q15" value="4">8:00-9:00 am <input type="radio" name="q15" value="5">9:00-10:00 am <input type="radio" name="q15" value="6">10:00 am or later</p>
-	
-	<p id="question16"><label>What time did you usually leave KTH during the last week?</label><input type="radio" name="q16" value="0" checked="checked" style="display: none;"><input type="radio" name="q16" value="1">Before 4 pm <input type="radio" name="q16" value="2">4:00-5:00 pm <input type="radio" name="q16" value="3">5:00-6:00 pm <input type="radio" name="q16" value="4">6:00-7:00 pm <input type="radio" name="q16" value="5">7:00 pm or later</p>
-	
-	<p id="question17"><label>Which one best describes your first activity after finishing one regular day at KTH?</label>
-	<table class="questionnaire">
-
-	<tr id="question17a"><td>Going directly back home</td><td><input type="number" name="q14e1" min="0"><select name="q14e2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
-	<tr id="question17b"><td>Shopping</td>			<td><input type="number" name="q14e1" min="0"><select name="q14e2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
-	<tr id="question17c"><td>Studying</td>			<td><input type="number" name="q14e1" min="0"><select name="q14e2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
-	<tr id="question17d"><td>Entertainment</td>		<td><input type="number" name="q14e1" min="0"><select name="q14e2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
-	<tr id="question17e"><td>Picking up child</td>	<td><input type="number" name="q14e1" min="0"><select name="q14e2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
-	<tr id="question17f"><td>Others</td>			<td><input type="number" name="q14e1" min="0"><select name="q14e2"><option value="week">times per week</option><option value="month">times per month</option><option value="year">times per year</option></select></td></tr>
-	</table></p>
-	
-	</div>
-	<div class="next" onclick='nextPage4()'>Next</div><div style="clear:both;"></div>
-</div>
-
-
-<div id="page5" style="display: none;" class="page">
 	<div class="pageTitle">Step 3 of 3</div>
 	<div class="pageText"><p>Imagine the following situation and select a mobility option: you now need to travel a daily trip between KTH main campus and one of the south campuses, for a purpose (e.g., meeting/conference/course). You have several realistic mobility options to choose from: automobile, public transport, and a dedicated minibus. An illustration of their figures and environment inside is as follows. We assume that you need to drive the car yourself if automobile is selected. Only dedicated minibus offers free Wifi and some light facilities for office on-the-go. The dedicated minibus is scheduled twice a day. The attributes are calculated according to suggestions from Google Maps, published vehicle technical data and articles on fuel consumptions, so that approximation of reality is expected.</p>
 	<table  class="questionnaire">
@@ -230,7 +341,7 @@
 	
 	<p>Please drag and drop your choice to the graph based on how much you prefore your choice during peak hours and during off-peak hours</p>
 	<img src="img/drop.gif" class="gif">
-	<p id="madtatoryPage5" style="display: none;" class="missedQuestion"><b>Please drag and drop all transportation choices before going to next page!</b></p>
+	<p id="mandatoryPage3" style="display: none;" class="missedQuestion"><b>Please drag and drop all transportation choices before going to next page!</b></p>
 	<table>
 	<tr><td><div id="car" class="ui-widget-content">Car</div></td>
 <td><div id="bus" class="ui-widget-content">Bus</div></td>
@@ -252,7 +363,7 @@
 <div class="lineh"></div>
 </div>
 </td>
-<td><div id="droppable"><div id="droppableText" style="padding:3vw">Drop in this field</div></div></td><td></td><td><div id="colorCode"></div></td><td>PREFERABLE<br><br>UNPREFERABLE
+<td><div id="droppable"><div id="droppableText" style="padding:3vw">Drop in this field</div></div></td><td></td><td><div id="colorCode">P<br/>R<br/>E<br/>F<br/>E<br/>R<br/>A<br/>B<br/>L<br/>E<div style="position: absolute;bottom:0;text-align:center;font-weight:bold;width:40px;">U<br/>N<br/>P<br/>R<br/>E<br/>F<br/>E<br/>R<br/>A<br/>B<br/>L<br/>E</div></div></td><td>
 </td></tr>
 <tr><td></td><td>
 <div class="connection">
@@ -270,8 +381,13 @@
 
  
 
+	<p  id="question29">
+		<label for "q29">If you would like to in a lottery for 500 SEK worth ICA presentkort, and to be informed about the results, please provide an email address </label>
+		<input type="text" name="q29" id="q29"/>
+	</p>
+<br/>
 
-
+ 
  
  
  
@@ -286,7 +402,7 @@
 <input type="hidden" name="miniTop" id="miniTop">
 
 	</div><p></p>
-	<div class="next" onclick='nextPage5()'>Next</div><div style="clear:both;"></div>
+	<div class="next" onclick='nextPage3()'>Submit</div><div style="clear:both;"></div>
 </div>
 
 
@@ -295,8 +411,72 @@
 	
 	</form>
 <script>
+function nextIntro() {
+document.getElementById("intro").style.display = "none";
+	document.getElementById("page3").style.display = "";
+}
+
+function nextPage1() {
+	var pass=true;
+	
+if($("input[name='q1']:checked").val()=="NA") 			{$("#question1").addClass("missedQuestion"); pass=false;} else {$("#question1").removeClass("missedQuestion");}	
+if($("input[name='q4']:checked").val()=="NA") 			{$("#question4").addClass("missedQuestion"); pass=false;} else {$("#question4").removeClass("missedQuestion");}	
+if($("input[name='q5']:checked").val()=="NA") 			{$("#question5").addClass("missedQuestion"); pass=false;} else {$("#question5").removeClass("missedQuestion");}
+if(document.getElementById("q6a").value.length==0) 		{$("#question6").addClass("missedQuestion"); pass=false;} else {$("#question6").removeClass("missedQuestion");}
+if(document.getElementById("q7a").value.length==0) 		{$("#question7").addClass("missedQuestion"); pass=false;} else {$("#question7").removeClass("missedQuestion");}
+if(document.getElementById("q8a").value.length==0) 		{$("#question8").addClass("missedQuestion"); pass=false;} else {$("#question8").removeClass("missedQuestion");}
+if(document.getElementById("q9a").value.length==0) 		{$("#question9").addClass("missedQuestion"); pass=false;} else {$("#question9").removeClass("missedQuestion");}
+if(document.getElementById("q10a").value.length==0) 	{$("#question10").addClass("missedQuestion"); pass=false;} else {$("#question10").removeClass("missedQuestion");}
+if(document.getElementById("q11a").value.length==0) 	{$("#question11").addClass("missedQuestion"); pass=false;} else {$("#question11").removeClass("missedQuestion");}
+if(document.getElementById("q12a").value.length==0) 	{$("#question12").addClass("missedQuestion"); pass=false;} else {$("#question12").removeClass("missedQuestion");}
+if($("input[name='q13']:checked").val()=="NA") 			{$("#question13").addClass("missedQuestion"); pass=false;} else {$("#question13").removeClass("missedQuestion");}	
+
+	if (pass==false) {document.getElementById("mandatoryPage1").style.display = "";} else {
+	document.getElementById("page1").style.display = "none";
+	document.getElementById("page2").style.display = "";}
+
+}
+
+function nextPage2() {
+
+	var pass=true;
+if($("input[name='q14']:checked").val()=="NA") 			{$("#question14").addClass("missedQuestion"); pass=false;} else {$("#question14").removeClass("missedQuestion");}	
+if($("input[name='q15']:checked").val()=="NA") 			{$("#question15").addClass("missedQuestion"); pass=false;} else {$("#question15").removeClass("missedQuestion");}	
+if(document.getElementById("q16").value.length==0) 		{$("#question16").addClass("missedQuestion"); pass=false;} else {$("#question16").removeClass("missedQuestion");}
+if(document.getElementById("q17").value.length==0) 		{$("#question17").addClass("missedQuestion"); pass=false;} else {$("#question17").removeClass("missedQuestion");}
+if(document.getElementById("q18").value.length==0) 		{$("#question18").addClass("missedQuestion"); pass=false;} else {$("#question18").removeClass("missedQuestion");}
+if(document.getElementById("q19").value.length==0) 		{$("#question19").addClass("missedQuestion"); pass=false;} else {$("#question19").removeClass("missedQuestion");}
+if(document.getElementById("q20").value.length==0) 		{$("#question20").addClass("missedQuestion"); pass=false;} else {$("#question20").removeClass("missedQuestion");}
+if(document.getElementById("q21").value.length==0) 		{$("#question21").addClass("missedQuestion"); pass=false;} else {$("#question21").removeClass("missedQuestion");}
+if(document.getElementById("q22").value.length==0) 		{$("#question22").addClass("missedQuestion"); pass=false;} else {$("#question22").removeClass("missedQuestion");}
+if(document.getElementById("q23").value.length==0) 		{$("#question23").addClass("missedQuestion"); pass=false;} else {$("#question23").removeClass("missedQuestion");}
+if(document.getElementById("q24").value.length==0) 		{$("#question24").addClass("missedQuestion"); pass=false;} else {$("#question24").removeClass("missedQuestion");}
+if(document.getElementById("q25").value.length==0) 		{$("#question25").addClass("missedQuestion"); pass=false;} else {$("#question25").removeClass("missedQuestion");}
+if(document.getElementById("q26").value.length==0) 		{$("#question26").addClass("missedQuestion"); pass=false;} else {$("#question26").removeClass("missedQuestion");}
+if(document.getElementById("q27").value.length==0) 		{$("#question27").addClass("missedQuestion"); pass=false;} else {$("#question27").removeClass("missedQuestion");}
+if(document.getElementById("q28").value.length==0) 		{$("#question28").addClass("missedQuestion"); pass=false;} else {$("#question28").removeClass("missedQuestion");}
 
 
+	if (pass==false) {document.getElementById("mandatoryPage2").style.display = "";} else {
+	document.getElementById("page2").style.display = "none";
+	document.getElementById("page3").style.display = "";}
+	
+}
+
+function nextPage3() {
+
+	var pass=true;
+	
+	if(document.getElementById("carLeft").value.length==0) {pass=false; document.getElementById("mandatoryPage3").style.display = "";}
+	if(document.getElementById("busLeft").value.length==0) {pass=false; document.getElementById("mandatoryPage3").style.display = "";}
+	if(document.getElementById("railLeft").value.length==0) {pass=false; document.getElementById("mandatoryPage3").style.display = "";}
+	if(document.getElementById("miniLeft").value.length==0) {pass=false; document.getElementById("mandatoryPage3").style.display = "";}
+
+	if (pass){
+		document.getElementById("page3").style.display = "none";
+		document.getElementById("MobilityForm").submit();
+	}
+}
 
 </script>
 
